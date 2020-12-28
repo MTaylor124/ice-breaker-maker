@@ -7,6 +7,8 @@ import reportWebVitals from './reportWebVitals';
 import firebase from 'firebase/app'
 import 'firebase/analytics'
 
+import {GlobalContextProvider} from './components/context/GlobalContext'
+
 var firebaseConfig = {
     apiKey: "AIzaSyC-Ll4K0jcpHLPBwFtnUgVTQ1G1lt7UDKM",
     authDomain: "ice-breaker-maker.firebaseapp.com",
@@ -20,11 +22,7 @@ var firebaseConfig = {
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+ReactDOM.render(<GlobalContextProvider><App /></GlobalContextProvider>, document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function

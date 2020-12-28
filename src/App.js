@@ -1,35 +1,31 @@
-import './App.css';
+import './App.css'
 
-import firebase from 'firebase/app'
-import 'firebase/firestore'
+import {useContext} from 'react'
+
+// import firebase from 'firebase/app'
+// import 'firebase/firestore'
+
+import {GlobalContext} from './components/context/GlobalContext'
 
 export default function App() {
-  return (
-    <div className="App">
-        hello
 
-        <button onClick={() => {
+    let {
+        test
+    } = useContext(GlobalContext)
 
-            const newDataEntry = {
-                prompt: 'this is the question how do you guys feel about it?',
-                category: 'Tech',
-                createdBy: 'usersID',
-            }
 
-            firebase.firestore().collection('icebreakers').doc('idofdocument').delete()
+    return (
+        <div className="App">
+            hello
+
+            <button onClick={() => {
+
+                console.log('test', test)
+
+            }}>
+                write to database
+            </button>
             
-            
-            .add(newDataEntry)
-            .then(docRef => {
-                console.log('this is the docref', docRef)
-            })
-            .catch(err => {
-                console.error(err.code)
-            })
-        }}>
-            write to database
-        </button>
-        
-    </div>
+        </div>
   );
 }

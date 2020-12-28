@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import firebase from 'firebase/app'
 import 'firebase/analytics'
 
+
 import {GlobalContextProvider} from './components/context/GlobalContext'
 
 var firebaseConfig = {

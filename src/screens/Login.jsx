@@ -8,7 +8,6 @@ import 'firebase/auth'
 
 function Login(props) {
 const history = useHistory()
-// let provider = new firebase.auth.GoogleAuthProvider();
 
   return (
     <div className="login-container">
@@ -21,7 +20,7 @@ const history = useHistory()
             firebase.auth().signInWithEmailAndPassword(e.target[0].value, e.target[1].value)
               .then(() => {
                 console.log('logged in!')
-                //redirect to homepag   
+                //redirect to homepage   
                  history.push('/')
               })
               .catch(err => {

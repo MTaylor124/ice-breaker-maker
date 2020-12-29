@@ -1,0 +1,28 @@
+.icebreakersingle-containter {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.icebreaker-card {
+  height: 55vh;
+  width: 95vw;
+  margin-top: 5vh;
+  border: 2px solid black;
+  border-radius: 25px;
+  background-color: rgb(176, 214, 243);
+  box-shadow: 5px 5px #db5461;
+  transition-duration: 1000;
+  transition-property: transform;
+}
+
+.icebreaker-card:hover {
+  transform: rotate(360deg);
+  -webkit-transform: rotate(360deg);
+}
+
+.icebreaker-text {
+  text-align: center;
+  vertical-align: middle;
+  margin-top: 20vh;
+}

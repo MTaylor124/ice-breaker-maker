@@ -19,8 +19,10 @@ import IceBreakersSingle from './components/IceBreakers/IceBreakersSingle'
 import ActivitiesAll from './components/Activities/ActivitiesAll'
 import ActivitiesSingle from './components/Activities/ActivitiesSingle'
 
-
-
+import MyIceBreakers from './components/IceBreakers/MyIceBreakers'
+import MyIceBreaker from './components/IceBreakers/MyIceBreaker'
+import MyActivities from './components/Activities/MyActivities'
+import MyActivity from './components/Activities/MyActivity'
 
 import {
     BrowserRouter as Router,
@@ -60,6 +62,12 @@ export default function App() {
                   <Route exact path='/activity' component={ActivitiesSingle} /> 
                   <Route exact path='/icebreakers' component={IceBreakersAll} /> 
                   <Route exact path='/icebreaker' component={IceBreakersSingle} /> 
+
+                  <Route exact path='/myactivities' component={MyActivities} /> 
+                  <Route exact path='/myactivity' component={MyActivity} /> 
+                  <Route exact path='/myicebreakers' component={MyIceBreakers} /> 
+                  <Route exact path='/myicebreaker' component={MyIceBreaker} /> 
+
                   <Route exact path='/dev' component={Dev} />            
                 </Switch>
                 {bottomNavContent}

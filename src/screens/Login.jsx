@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from "react-router-dom"
 import './Login.css'
 import Button from '@material-ui/core/Button'
 
 import firebase from 'firebase/app'
 import 'firebase/auth'
+import { GlobalContext } from '../components/context/GlobalContext';
 
 function Login(props) {
-const history = useHistory()
-// let provider = new firebase.auth.GoogleAuthProvider();
+    const history = useHistory()
+
+    let {
+        auth
+    }= useContext(GlobalContext)
+    
 
   return (
     <div className="login-container">
@@ -20,8 +25,7 @@ const history = useHistory()
             e.preventDefault()
             firebase.auth().signInWithEmailAndPassword(e.target[0].value, e.target[1].value)
               .then(() => {
-                console.log('logged in!')
-                //redirect to homepag   
+                auth.signIn()
                  history.push('/')
               })
               .catch(err => {

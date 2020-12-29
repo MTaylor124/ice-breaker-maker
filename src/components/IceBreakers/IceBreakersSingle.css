@@ -2,27 +2,34 @@
   text-align: center;
   display: flex;
   justify-content: center;
+  background-color: rgb(238, 241, 248);
+}
+
+.card-hr {
+  background-color: rgb(112, 112, 112);
 }
 
 .icebreaker-card {
   height: 55vh;
   width: 95vw;
   margin-top: 5vh;
-  border: 2px solid black;
+  border: 2px solid rgb(112, 112, 112);
   border-radius: 25px;
-  background-color: rgb(176, 214, 243);
-  box-shadow: 5px 5px #db5461;
-  transition-duration: 1000;
-  transition-property: transform;
+  background-color: rgb(204, 212, 230);
+  /* box-shadow: 5px 5px #db5461; */
+  overflow: hidden;
+  transition-duration: 0.5s;
+  /* transition-property: transform; */
 }
 
 .icebreaker-card:hover {
-  transform: rotate(360deg);
-  -webkit-transform: rotate(360deg);
+  /* transform: rotate(360deg);
+  -webkit-transform: rotate(360deg); */
+  transform: scale(1.5);
 }
 
 .icebreaker-text {
   text-align: center;
   vertical-align: middle;
-  margin-top: 20vh;
+  margin-top: 15vh;
 }

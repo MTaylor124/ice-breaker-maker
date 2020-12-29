@@ -13,6 +13,15 @@ import Favorites from './components/Favorites/Favorites'
 import Topics from './components/Topics/Topics'
 import Create from './components/Create/Create'
 import Dev from './components/Dev/Dev'
+
+import IceBreakersAll from './components/IceBreakers/IceBreakersAll'
+import IceBreakersSingle from './components/IceBreakers/IceBreakersSingle'
+import ActivitiesAll from './components/Activities/ActivitiesAll'
+import ActivitiesSingle from './components/Activities/ActivitiesSingle'
+
+
+
+
 import {
     BrowserRouter as Router,
     Switch,
@@ -47,6 +56,10 @@ export default function App() {
                   <Route exact path='/topics' component={Topics} />
                   <Route exact path='/favorites' component={Favorites} /> 
                   <Route exact path='/create' component={Create} /> 
+                  <Route exact path='/activities' component={ActivitiesAll} /> 
+                  <Route exact path='/activity' component={ActivitiesSingle} /> 
+                  <Route exact path='/icebreakers' component={IceBreakersAll} /> 
+                  <Route exact path='/icebreaker' component={IceBreakersSingle} /> 
                   <Route exact path='/dev' component={Dev} />            
                 </Switch>
                 {bottomNavContent}

@@ -64,6 +64,21 @@ export default function Nav() {
                 MenuListProps={{ disablePadding: true }}
                 transitionDuration={500}
             >
+                <MenuItem onClick={handleClose} style={menuStyle}>
+                    <Link to='/myicebreakers' style={dropdownItemStyle}>
+                        My Icebreakers
+                    </Link>
+                </MenuItem>
+                <MenuItem onClick={handleClose} style={menuStyle}>
+                    <Link to='/myactivities' style={dropdownItemStyle}>
+                        My Activities
+                    </Link>
+                </MenuItem>
+                <MenuItem onClick={handleClose} style={menuStyle}>
+                    <Link to='/dev' style={dropdownItemStyle}>
+                        dev
+                    </Link>
+                </MenuItem>
                 <MenuItem onClick={() => {
                     firebase.auth().signOut()
                     .then(() => {
@@ -78,11 +93,6 @@ export default function Nav() {
                 }} style={menuStyle}>
                     <Link to='/' style={dropdownItemStyle}>
                         Sign Out
-                    </Link>
-                </MenuItem>
-                <MenuItem onClick={handleClose} style={menuStyle}>
-                    <Link to='/dev' style={dropdownItemStyle}>
-                        dev
                     </Link>
                 </MenuItem>
             </Menu>

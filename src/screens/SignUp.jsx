@@ -1,11 +1,12 @@
 import React from 'react';
 import './SignUp.css'
 import Button from '@material-ui/core/Button'
-
+import { useHistory } from "react-router-dom"
 import firebase from 'firebase/app'
 import 'firebase/auth'
 
 function SignUp(props) {
+  const history = useHistory()
   return (
     <div className="signup-container">
       <h1 className="app-name">Ice Breaker Maker</h1>
@@ -18,6 +19,7 @@ function SignUp(props) {
             .then(() => {
                 console.log('signed up!')
                 // redirect to homepage/dashboard
+                history.push('/home')
             })
             .catch(err => {
                 console.error(err.code)

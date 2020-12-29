@@ -1,4 +1,6 @@
 import './App.css'
+import Login from './screens/Login'
+import SignUp from './screens/SignUp'
 
 import {useContext} from 'react'
 
@@ -25,7 +27,9 @@ export default function App() {
         <div className="App">
             <Router>
                 <Switch>
-                    <Route exact path='/' component={Home} />
+                  <Route exact path='/' component={Home} />
+                  <Route exact path='/login' component={Login} />
+                  <Route exact path='/signup' component={SignUp} />            
                 </Switch>
             </Router>
         </div>

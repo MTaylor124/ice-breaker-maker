@@ -8,6 +8,9 @@ import MenuItem from '@material-ui/core/MenuItem'
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz'
 import { GlobalContext } from '../context/GlobalContext'
 
+import firebase from 'firebase/app'
+import 'firebase/auth'
+
 export default function Nav() {
 
     let {
@@ -61,7 +64,18 @@ export default function Nav() {
                 MenuListProps={{ disablePadding: true }}
                 transitionDuration={500}
             >
-                <MenuItem onClick={handleClose} style={menuStyle}>
+                <MenuItem onClick={() => {
+                    firebase.auth().signOut()
+                    .then(() => {
+                        handleClose()
+                        setTimeout(() => {
+                            auth.signOut()
+                        }, 500)
+                    })
+                    .catch(err => {
+                        console.error(err.code)
+                    })
+                }} style={menuStyle}>
                     <Link to='/' style={dropdownItemStyle}>
                         Sign Out
                     </Link>

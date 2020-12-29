@@ -1,0 +1,47 @@
+.icebreakersingle-containter {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgb(238, 241, 248);
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+.card-hr {
+  background-color: rgb(112, 112, 112);
+}
+
+.icebreaker-card {
+  height: 55vh;
+  width: 95vw;
+  margin: 2vw;
+  border: 2px solid rgb(112, 112, 112);
+  border-radius: 25px;
+  background-color: rgb(204, 212, 230);
+  /* overflow: hidden;
+  transition-duration: 0.5s; */
+}
+
+/* .icebreaker-card:hover {
+  transform: scale(1.5);
+} */
+
+.icebreaker-text {
+  width: 80vw;
+  font-size: large;
+  text-align: center;
+  vertical-align: middle;
+  margin: 0 auto;
+  margin-top: 15vh;
+}
+
+.BreakIceBtn-2 {
+  color: white;
+  background-color: rgb(62, 114, 233);
+  border: 1px solid rgb(139, 139, 139);
+  border-radius: 50%;
+  height: 250px;
+  width: 250px;
+  margin: 0 auto;
+}

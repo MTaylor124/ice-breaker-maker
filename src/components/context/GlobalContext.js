@@ -11,6 +11,19 @@ export class GlobalContextProvider extends React.Component {
 
             // Matt
 
+            auth: {
+                signedIn: false,
+                signIn: () => {
+                    this.setState(s => {
+                        return s.auth.signedIn = true
+                    })
+                },
+                signOut: () => {
+                    this.setState(s => {
+                        return s.auth.signedIn = false
+                    })
+                },
+            }
             // Maha
 
             // Dean

@@ -8,6 +8,9 @@ import MenuItem from '@material-ui/core/MenuItem'
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz'
 import { GlobalContext } from '../context/GlobalContext'
 
+import firebase from 'firebase/app'
+import 'firebase/auth'
+
 export default function Nav() {
 
     let {
@@ -62,13 +65,34 @@ export default function Nav() {
                 transitionDuration={500}
             >
                 <MenuItem onClick={handleClose} style={menuStyle}>
-                    <Link to='/' style={dropdownItemStyle}>
-                        Sign Out
+                    <Link to='/myicebreakers' style={dropdownItemStyle}>
+                        My Icebreakers
+                    </Link>
+                </MenuItem>
+                <MenuItem onClick={handleClose} style={menuStyle}>
+                    <Link to='/myactivities' style={dropdownItemStyle}>
+                        My Activities
                     </Link>
                 </MenuItem>
                 <MenuItem onClick={handleClose} style={menuStyle}>
                     <Link to='/dev' style={dropdownItemStyle}>
                         dev
+                    </Link>
+                </MenuItem>
+                <MenuItem onClick={() => {
+                    firebase.auth().signOut()
+                    .then(() => {
+                        handleClose()
+                        setTimeout(() => {
+                            auth.signOut()
+                        }, 500)
+                    })
+                    .catch(err => {
+                        console.error(err.code)
+                    })
+                }} style={menuStyle}>
+                    <Link to='/' style={dropdownItemStyle}>
+                        Sign Out
                     </Link>
                 </MenuItem>
             </Menu>

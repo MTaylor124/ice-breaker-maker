@@ -5,14 +5,28 @@ import Button from '@material-ui/core/Button'
 
 function Login(props) {
 
-  // let provider = new firebase.auth.GoogleAuthProvider();
+// let provider = new firebase.auth.GoogleAuthProvider();
 
   return (
     <div className="login-container">
       <h1 className="app-name">Ice Breaker Maker</h1>
         <div className="login-buttons-container">
-          <Button className="login-button" variant="contained" color="primary">Login With Google</Button>
+          <label>Email: 
+            <input
+            type="text"
+            name="email"
+            />
+          <br />
+          <label>Password:
+           <input
+              type='password'
+              name='password'
+            />
+          </label>
+          </label>
           <Button className="login-button" variant="contained" color="primary">Login</Button>
+          <p> Or </p>
+          <Button className="login-button" variant="contained" color="primary">Login With Google</Button>
         </div>
     </div>
   );

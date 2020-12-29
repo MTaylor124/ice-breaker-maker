@@ -87,6 +87,32 @@ export class GlobalContextProvider extends React.Component {
                         return s.user.userID = userID
                     })
                 }
+            },
+            createPrompt: {
+                type: null,
+                changeTitle: (newtitle) => {
+                    this.setState(s => {
+                        return s.createPrompt.title = newtitle
+                    })
+                },
+                title: null,
+                changeBody: (newBody) => {
+                    this.setState(s => {
+                        return s.createPrompt.body = newBody
+                    })
+                },
+                body: null,
+                setType: (newType) => {
+                    if (this.state.createPrompt.type === newType) {
+                        this.setState(s => {
+                            return s.createPrompt.type = null
+                        })
+                    } else {
+                        this.setState(s => {
+                            return s.createPrompt.type = newType
+                        })
+                    }
+                },
             }
             // Maha
 

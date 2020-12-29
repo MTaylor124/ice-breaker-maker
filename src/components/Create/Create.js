@@ -79,12 +79,16 @@ export default function Create() {
                 let month = (today.getMonth() + 1).toString()
                 let year = today.getFullYear().toString()
                 let todaysDate = month.concat('-',day,'-',year)
+
+                let randomID = Math.floor(Math.random() * 1000000)
+
                 firebase.firestore().collection(createPrompt.type)
                 .add({
                     title: createPrompt.title,
                     body: createPrompt.body,
                     added: todaysDate,
-                    createdBy: user.userID
+                    createdBy: user.userID,
+                    id: randomID
                 })
                 .then(docref => {
                     console.log('we did it', docref.id)

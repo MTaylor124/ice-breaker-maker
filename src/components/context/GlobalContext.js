@@ -86,7 +86,30 @@ export class GlobalContextProvider extends React.Component {
                     this.setState(s => {
                         return s.user.userID = userID
                     })
+                },
+            },
+            icebreakers: {
+                icebreakerList: [],
+                addToIceBreakers: (newIceBreaker) => {
+                    this.setState(s => {
+                        return s.icebreakers.icebreakerList.push(newIceBreaker)
+                    })
+                },
+                checkIcebreakers: () => {
+                    console.log(this.state.icebreakers.icebreakerList)
+                },
+                clearList: () => {
+                    this.setState(s => {
+                        return s.icebreakers.icebreakerList = []
+                    })
+                },
+                indexOfRandomIcebreaker: null,
+                setIndexOfRandomIcebreaker: (newIndex) => {
+                    this.setState(s => {
+                        return s.icebreakers.indexOfRandomIcebreaker = newIndex
+                    })
                 }
+
             },
             createPrompt: {
                 type: null,

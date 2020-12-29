@@ -3,8 +3,9 @@ import './SignUp.css'
 
 function SignUp(props) {
   return (
-    <div>
+    <div className="signup-container">
       <h1 className="app-name">Ice Breaker Maker</h1>
+      <h3>Create an Account</h3>
       <form className="signup-form">
       <label>Email:
        <input

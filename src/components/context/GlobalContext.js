@@ -1,4 +1,6 @@
 import React, {createContext} from 'react'
+import firebase from 'firebase/app'
+import 'firebase/auth'
 
 export const GlobalContext = createContext()
 
@@ -81,6 +83,16 @@ export class GlobalContextProvider extends React.Component {
             // Dean
 
         }
+    }
+
+    componentDidMount() {
+        firebase.auth().onAuthStateChanged(user => {
+            if (user) {
+                this.setState(s => {
+                    return s.auth.signedIn = true
+                })
+            }
+        })
     }
 
     render() {

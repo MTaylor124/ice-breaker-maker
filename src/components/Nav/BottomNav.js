@@ -1,12 +1,20 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 import { styled } from '@material-ui/core/styles'
 import BottomNavigation from '@material-ui/core/BottomNavigation'
 import FavoriteIcon from '@material-ui/icons/Favorite'
 import SearchIcon from '@material-ui/icons/Search'
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction'
+import AddCircleIcon from '@material-ui/icons/AddCircle'
+
+import { Redirect } from "react-router-dom"
+import { GlobalContext } from '../context/GlobalContext'
 
 export default function BottomNav() {
+
+    let {
+        nav
+    }= useContext(GlobalContext)
 
     const FancyNavigation = styled(BottomNavigation)({
         // backgroundColor: 'pink',
@@ -19,8 +27,25 @@ export default function BottomNav() {
         zIndex: 987349539
     })
 
+    let redirectContent
+    if (nav.redirectingToFavorites) {
+        redirectContent = (
+            <Redirect to="favorites" />
+        )
+    } else if (nav.redirectingToTopics) {
+        redirectContent = (
+            <Redirect to="topics" />
+        )
+    } else if (nav.redirectingToCreate) {
+        redirectContent = (
+            <Redirect to="create" />
+        )
+    } else {
+        redirectContent = <div></div>
+    }
     return (
         <div>
+            {redirectContent}
             <FancyNavigation
                 showLabels={true}
                 // onChange={(event, newValue) => bottomNavigation.changeScreen(newValue) }
@@ -29,12 +54,16 @@ export default function BottomNav() {
                     <BottomNavigationAction 
                         // style={bottomNavStyle} 
                         label="Topics" 
-                        icon={<SearchIcon onClick={() => console.log('topics')}/>} />
+                        icon={<SearchIcon onClick={() => nav.redirectToTopics()}/>} />
 
                     <BottomNavigationAction 
                         // style={bottomNavStyle} 
                         label="Favorites" 
-                        icon={<FavoriteIcon onClick={() => console.log('favorites')}/>} />
+                        icon={<FavoriteIcon onClick={() => nav.redirectToFavorites()}/>} />
+                    <BottomNavigationAction 
+                    // style={bottomNavStyle} 
+                        label="Create" 
+                        icon={<AddCircleIcon onClick={() => nav.redirectToCreate()}/>} />
             </FancyNavigation>
         </div>
     )

@@ -1,0 +1,11 @@
+.dev-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    /* margin-top: 20px; */
+}
+.dev-sign-in-status {
+    font-weight: 600;
+    font-size: 2rem;
+}

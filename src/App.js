@@ -9,7 +9,10 @@ import {useContext} from 'react'
 
 import Nav from './components/Nav/Nav'
 import BottomNav from './components/Nav/BottomNav'
-
+import Favorites from './components/Favorites/Favorites'
+import Topics from './components/Topics/Topics'
+import Create from './components/Create/Create'
+import Dev from './components/Dev/Dev'
 import {
     BrowserRouter as Router,
     Switch,
@@ -40,7 +43,11 @@ export default function App() {
                 <Switch>
                   <Route exact path='/' component={Home} />
                   <Route exact path='/login' component={Login} />
-                  <Route exact path='/signup' component={SignUp} />            
+                  <Route exact path='/signup' component={SignUp} />  
+                  <Route exact path='/topics' component={Topics} />
+                  <Route exact path='/favorites' component={Favorites} /> 
+                  <Route exact path='/create' component={Create} /> 
+                  <Route exact path='/dev' component={Dev} />            
                 </Switch>
                 {bottomNavContent}
             </Router>

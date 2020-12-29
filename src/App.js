@@ -2,12 +2,14 @@ import './App.css'
 import Login from './screens/Login'
 import SignUp from './screens/SignUp'
 
-// import {useContext} from 'react'
+import {useContext} from 'react'
 
 // import firebase from 'firebase/app'
 // import 'firebase/firestore'
 
 import Nav from './components/Nav/Nav'
+import BottomNav from './components/Nav/BottomNav'
+
 import {
     BrowserRouter as Router,
     Switch,
@@ -16,14 +18,21 @@ import {
 
 import Home from './components/Home/Home'
 
-// import {GlobalContext} from './components/context/GlobalContext'
+import {GlobalContext} from './components/context/GlobalContext'
 
 export default function App() {
 
-    // let {
-    //     test
-    // } = useContext(GlobalContext)
+    let {
+        auth
+    } = useContext(GlobalContext)
 
+    let bottomNavContent
+
+    if (auth.signedIn) {
+        bottomNavContent = <BottomNav />
+    } else {
+        bottomNavContent = <div></div>
+    }
     return (
         <div className="App">
             <Router>
@@ -33,6 +42,7 @@ export default function App() {
                   <Route exact path='/login' component={Login} />
                   <Route exact path='/signup' component={SignUp} />            
                 </Switch>
+                {bottomNavContent}
             </Router>
         </div>
   );

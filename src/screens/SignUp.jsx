@@ -1,5 +1,6 @@
 import React from 'react';
 import './SignUp.css'
+import Button from '@material-ui/core/Button'
 
 function SignUp(props) {
   return (
@@ -12,7 +13,8 @@ function SignUp(props) {
           placeholder="Email"
           type="text"
           name="username"
-        />
+          />
+        <br />
         <label>Password:
          <input
             placeholder="Password"
@@ -20,7 +22,8 @@ function SignUp(props) {
             name='password'
           />
         </label>
-        <button>Submit</button>
+        <br />
+        <Button className="submit-button" variant="contained" color="primary">Submit</Button>
         </label>
         </form>
     </div>

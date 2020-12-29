@@ -23,6 +23,58 @@ export class GlobalContextProvider extends React.Component {
                         return s.auth.signedIn = false
                     })
                 },
+                toggleSignedIn: () => {
+                    this.setState(s => {
+                        return s.auth.signedIn = !this.state.auth.signedIn
+                    })
+                }
+            },
+            nav: {
+                redirectingToFavorites: false,
+                redirectToFavorites: () => {
+                    this.setState(s => {
+                        setTimeout(() => {
+                            this.setState(s => {
+                                return s.nav.redirectingToFavorites = false
+                            })
+                        }, 50)
+                        return s.nav.redirectingToFavorites = true
+                    })
+                },
+                redirectingToActivities: false,
+                redirectToActivities: () => {
+                    this.setState(s => {
+                        setTimeout(() => {
+                            this.setState(s => {
+                                return s.nav.redirectingToActivities = false
+                            })
+                        }, 50)
+                        return s.nav.redirectingToActivities = true
+                    })
+                },
+                redirectingToTopics: false,
+                redirectToTopics: () => {
+                    this.setState(s => {
+                        setTimeout(() => {
+                            this.setState(s => {
+                                return s.nav.redirectingToTopics = false
+                            })
+                        }, 50)
+                        return s.nav.redirectingToTopics = true
+                    })
+                },
+                redirectingToCreate: false,
+                redirectToCreate: () => {
+                    this.setState(s => {
+                        setTimeout(() => {
+                            this.setState(s => {
+                                return s.nav.redirectingToCreate = false
+                            })
+                        }, 50)
+                        return s.nav.redirectingToCreate = true
+                    })
+                }
+                
             }
             // Maha
 

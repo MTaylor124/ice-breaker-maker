@@ -66,6 +66,11 @@ export default function Nav() {
                         Sign Out
                     </Link>
                 </MenuItem>
+                <MenuItem onClick={handleClose} style={menuStyle}>
+                    <Link to='/dev' style={dropdownItemStyle}>
+                        dev
+                    </Link>
+                </MenuItem>
             </Menu>
         )
     } else {
@@ -91,6 +96,11 @@ export default function Nav() {
                 <MenuItem onClick={handleClose} style={menuStyle}>
                     <Link to='/signup' style={dropdownItemStyle}>
                         Sign Up
+                    </Link>
+                </MenuItem>
+                <MenuItem onClick={handleClose} style={menuStyle}>
+                    <Link to='/dev' style={dropdownItemStyle}>
+                        dev
                     </Link>
                 </MenuItem>
             </Menu>

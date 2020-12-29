@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from "react-router-dom"
 import './Login.css'
 import Button from '@material-ui/core/Button'
 
@@ -6,7 +7,7 @@ import firebase from 'firebase/app'
 import 'firebase/auth'
 
 function Login(props) {
-
+const history = useHistory()
 // let provider = new firebase.auth.GoogleAuthProvider();
 
   return (
@@ -20,7 +21,8 @@ function Login(props) {
             firebase.auth().signInWithEmailAndPassword(e.target[0].value, e.target[1].value)
               .then(() => {
                 console.log('logged in!')
-                //redirect to homepage
+                //redirect to homepag   
+                 history.push('/')
               })
               .catch(err => {
                 console.log(err.code)

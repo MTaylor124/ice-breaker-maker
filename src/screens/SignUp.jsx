@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button'
 import { useHistory } from "react-router-dom"
 import firebase from 'firebase/app'
 import 'firebase/auth'
+import 'firebase/firestore'
 
 import { GlobalContext } from '../components/context/GlobalContext';
 
@@ -21,7 +22,25 @@ function SignUp(props) {
         onSubmit={(e) => {
             e.preventDefault()
             firebase.auth().createUserWithEmailAndPassword(e.target[0].value, e.target[1].value)
-            .then(() => {
+            .then(user => {
+
+                let today = new Date()
+                let day = today.getDate().toString()
+                let month = (today.getMonth() + 1).toString()
+                let year = today.getFullYear().toString()
+                let todaysDate = month.concat('-',day,'-',year)
+
+                firebase.firestore().collection('users')
+                .add({
+                    userID: user.user.uid,
+                    joined: todaysDate
+                })
+                .then(docRef => {
+                    console.log(docRef.id)
+                })
+                .catch(err => {
+                    console.error(err.code)
+                })
                 auth.signIn()
                 history.push('/')
             })

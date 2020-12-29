@@ -19,17 +19,20 @@
   border: 2px solid rgb(112, 112, 112);
   border-radius: 25px;
   background-color: rgb(204, 212, 230);
-  overflow: hidden;
-  transition-duration: 0.5s;
+  /* overflow: hidden;
+  transition-duration: 0.5s; */
 }
 
-.icebreaker-card:hover {
+/* .icebreaker-card:hover {
   transform: scale(1.5);
-}
+} */
 
 .icebreaker-text {
+  width: 80vw;
+  font-size: large;
   text-align: center;
   vertical-align: middle;
+  margin: 0 auto;
   margin-top: 15vh;
 }
 

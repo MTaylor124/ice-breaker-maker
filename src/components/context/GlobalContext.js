@@ -41,6 +41,17 @@ export class GlobalContextProvider extends React.Component {
                         return s.nav.redirectingToFavorites = true
                     })
                 },
+                redirectingToActivities: false,
+                redirectToActivities: () => {
+                    this.setState(s => {
+                        setTimeout(() => {
+                            this.setState(s => {
+                                return s.nav.redirectingToActivities = false
+                            })
+                        }, 50)
+                        return s.nav.redirectingToActivities = true
+                    })
+                },
                 redirectingToTopics: false,
                 redirectToTopics: () => {
                     this.setState(s => {

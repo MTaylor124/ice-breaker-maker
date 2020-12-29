@@ -6,6 +6,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite'
 import SearchIcon from '@material-ui/icons/Search'
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction'
 import AddCircleIcon from '@material-ui/icons/AddCircle'
+import DirectionsRunIcon from '@material-ui/icons/DirectionsRun'
 
 import { Redirect } from "react-router-dom"
 import { GlobalContext } from '../context/GlobalContext'
@@ -40,6 +41,10 @@ export default function BottomNav() {
         redirectContent = (
             <Redirect to="create" />
         )
+    } else if (nav.redirectingToActivities) {
+        redirectContent = (
+            <Redirect to="activities" />
+        )
     } else {
         redirectContent = <div></div>
     }
@@ -60,6 +65,10 @@ export default function BottomNav() {
                         // style={bottomNavStyle} 
                         label="Favorites" 
                         icon={<FavoriteIcon onClick={() => nav.redirectToFavorites()}/>} />
+                        <BottomNavigationAction 
+                    // style={bottomNavStyle} 
+                        label="Activities" 
+                        icon={<DirectionsRunIcon onClick={() => nav.redirectToActivities()}/>} />
                     <BottomNavigationAction 
                     // style={bottomNavStyle} 
                         label="Create" 

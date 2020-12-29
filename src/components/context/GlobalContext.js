@@ -12,7 +12,7 @@ export class GlobalContextProvider extends React.Component {
             // Matt
 
             auth: {
-                signedIn: false,
+                signedIn: true,
                 signIn: () => {
                     this.setState(s => {
                         return s.auth.signedIn = true

@@ -4,12 +4,11 @@
 }
 
 .signup-form {
-  padding-top: 10vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-width: 80vw;
-  padding: 10px;
-  margin: 0 auto;
-  border-radius: 5px;
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px auto;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }

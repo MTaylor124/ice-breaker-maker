@@ -1,13 +1,7 @@
-/* * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    border: 1px solid gold;
-} */
 body {
     background-color: #EDF1F9;
 }
-.Topics {
+.Favorites {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -22,17 +16,18 @@ body {
     letter-spacing: 0px;
     color: #000000;
 }
-.Topics>h1 {
+.Favorites>h1 {
     /* width: 300px; */
     margin: 6px 0;
 }
-.Topics>p {
+.Favorites>p {
     margin: 4px 0;
     padding: 3px;
+    padding-bottom: 5px;
 }
 
 @media (max-width: 600px) {
-    .Topic {
+    .Favorites {
         margin: 0 auto;
     }
  }

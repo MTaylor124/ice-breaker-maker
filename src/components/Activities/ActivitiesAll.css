@@ -4,13 +4,16 @@
     box-sizing: border-box;
     border: 1px solid gold;
 } */
+body {
+    background-color: #EDF1F9;
+}
 .ActivitiesAll {
-    margin: auto;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: #EDF1F9 0% 0% no-repeat padding-box;
+    background: #EDF1F9;
     opacity: 1;
     font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) 20px Segoe UI;
     letter-spacing: var(--unnamed-character-spacing-0);
@@ -20,10 +23,15 @@
     color: #000000;
 }
 .ActivitiesAll>h1 {
-    width: 300px;
+    /* width: 300px; */
     margin: 6px 0;
 }
 .ActivitiesAll>p {
     margin: 4px 0;
     padding: 3px;
 }
+@media (max-width: 600px) {
+    .ActivitiesAll {
+        margin: 0 auto;
+    }
+ }

@@ -1,10 +1,13 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import './ActivityCategories.css';
+import Backdrop from '@material-ui/core/Backdrop'
+import IceBreakersSingle from './../IceBreakers/IceBreakersSingle'
+import { GlobalContext } from '../context/GlobalContext.js';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -16,6 +19,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function CheckboxesGroup() {
+    let {
+        home
+    } = useContext(GlobalContext)
+
+    const backdropstyle = {
+        zIndex: '57398457349875928',
+        backgroundColor: 'rgba(255,255,255,0.3)'
+    }
     const classes = useStyles();
     const [state, setState] = React.useState({
         truthDare: true,
@@ -79,6 +90,13 @@ export default function CheckboxesGroup() {
                     </FormGroup>
                 </FormControl>
             </div>
+            <Backdrop
+                    style={backdropstyle}
+                    open={home.showingPopup}
+                    transitionDuration={900}
+                >
+                    <IceBreakersSingle />
+                </Backdrop>
         </div>
     );
 }

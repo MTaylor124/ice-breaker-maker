@@ -12,7 +12,9 @@ export class GlobalContextProvider extends React.Component {
             test: 'yes',
 
             // Matt
-
+            checkContext: () => {
+                console.log('context:', this.state)
+            },
             auth: {
                 signedIn: false,
                 signIn: () => {
@@ -87,6 +89,12 @@ export class GlobalContextProvider extends React.Component {
                         return s.user.userID = userID
                     })
                 },
+                userRef: null,
+                setUserRef: (userRef) => {
+                    this.setState(s => {
+                        return s.user.userRef = userRef
+                    })
+                }
             },
             icebreakers: {
                 icebreakerList: [],
@@ -107,6 +115,17 @@ export class GlobalContextProvider extends React.Component {
                 setIndexOfRandomIcebreaker: (newIndex) => {
                     this.setState(s => {
                         return s.icebreakers.indexOfRandomIcebreaker = newIndex
+                    })
+                },
+                loadingList: null,
+                loadList: () => {
+                    this.setState(s => {
+                        return s.icebreakers.loadingList = true
+                    })
+                },
+                finishLoadingList: () => {
+                    this.setState(s => {
+                        return s.icebreakers.loadingList = false
                     })
                 }
 
@@ -209,6 +228,20 @@ export class GlobalContextProvider extends React.Component {
                     s.user.userID = user.uid
                     return s
                 })
+                setTimeout(() => {
+                    firebase.firestore().collection('users')
+                    .where('userID', '==', user.uid)
+                    .limit(1)
+                    .get()
+                    .then(snapshot => {
+                        snapshot.forEach(doc => {
+                            this.state.user.setUserRef(doc.id)
+                        })
+                    })
+                    .catch(err => {
+                        console.error(err.code)
+                    })
+                }, 500)
             }
         })
     }

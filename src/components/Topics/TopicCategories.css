@@ -2,18 +2,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    top: 196px;
-    left: 12px;
-    width: 460px;
-    height: 250px;
+    /* top: 196px;
+    left: 12px; */
+    width: 55vh;
     background: #17409129 0% 0% no-repeat padding-box;
     border: 1px solid #707070;
-    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) 14px/19px Segoe UI;
+    /* font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) 14px/19px Segoe UI; */
     letter-spacing: var(--unnamed-character-spacing-0);
     text-align: left;
-    font: normal normal normal 14px/19px Segoe UI;
+    /* font: normal normal normal 14px/19px Segoe UI; */
     letter-spacing: 0px;
     color: #020202;
     opacity: 1;
     margin-top: 18px;
+}
+
+@media (max-width: 600px) {
+   .TopicCategories {
+        width: 355px;
+        padding: 2px;
+   }
 }

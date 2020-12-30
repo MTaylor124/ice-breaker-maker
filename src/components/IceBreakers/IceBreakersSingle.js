@@ -4,7 +4,7 @@ import './IceBreakersSingle.css'
 import firebase from 'firebase/app'
 import 'firebase/firestore'
 import { GlobalContext } from '../context/GlobalContext';
-
+import Button from '@material-ui/core/Button'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 // import FavoriteIcon from '@material-ui/icons/Favorite';
 // import { ToggleButton } from '@material-ui/lab'
@@ -147,9 +147,20 @@ export default function IceBreakersSingle() {
         >
           BREAK THE ICE
         </button>
-        <button onClick={() => home.closePopup()}>
+        <Button 
+            // color='primary'
+            variant='contained'
+            style={{
+                backgroundColor: 'gray',
+                color: 'white',
+                textTransform: 'none',
+                width: '50vw',
+                margin: 'auto',
+                marginTop: '15px'
+            }}
+            onClick={() => home.closePopup()}>
             Close
-        </button>
+        </Button>
       </div>
     )
 }

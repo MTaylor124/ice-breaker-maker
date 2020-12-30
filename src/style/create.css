@@ -3,11 +3,12 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    margin-top: 50px;
 }
 .create-prompt-header {
     font-size: 1.5rem;
     font-weight: 600;
-    margin-top: 15px;
+    margin: 15px 0 10px;
 }
 .create-prompt-checkbox-row {
     display: flex;

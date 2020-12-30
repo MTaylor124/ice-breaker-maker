@@ -19,6 +19,7 @@ function BreakIceButton(props) {
             <br></br>
             <button 
                 onClick={() => {
+                    icebreakers.loadList()
                     icebreakers.clearList()
                     firebase.firestore().collection('Icebreakers')
                     .get()
@@ -26,7 +27,8 @@ function BreakIceButton(props) {
                         snapshot.forEach(doc => {
                             let newIceBreaker = {
                                 title: doc.data().title,
-                                body: doc.data().body
+                                body: doc.data().body,
+                                id: doc.id
                             }
                             icebreakers.addToIceBreakers(newIceBreaker)
                         })
@@ -35,6 +37,7 @@ function BreakIceButton(props) {
                         icebreakers.setIndexOfRandomIcebreaker(Math.floor((Math.random() * icebreakers.icebreakerList.length)))
                     })
                     .then(() => {
+                        icebreakers.finishLoadingList()
                         home.showPopup()
                     })
                     .catch(err => {

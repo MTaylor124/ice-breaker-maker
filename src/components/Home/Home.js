@@ -22,7 +22,7 @@ export default function Home() {
             <Backdrop
                 style={backdropstyle}
                 open={home.showingPopup}
-                transitionDuration={1200}
+                transitionDuration={900}
             >
                 <IceBreakersSingle />
             </Backdrop>

@@ -6,24 +6,25 @@ import 'firebase/firestore'
 import { GlobalContext } from '../context/GlobalContext';
 
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-import FavoriteIcon from '@material-ui/icons/Favorite';
+// import FavoriteIcon from '@material-ui/icons/Favorite';
 // import { ToggleButton } from '@material-ui/lab'
 
 export default function IceBreakersSingle() {
 
   const [icebreaker, setIceBreaker] = useState("Press the Button!")
   
+  let {
+  icebreakers,
+  home
+  } = useContext(GlobalContext)
+
   useEffect(() => {
     if (icebreakers.icebreakerList[icebreakers.indexOfRandomIcebreaker]) {
       const getIceBreaker = icebreakers.icebreakerList[icebreakers.indexOfRandomIcebreaker].body
       setIceBreaker(getIceBreaker)
     }
-  })
-
-  let {
-  icebreakers,
-  home
-  } = useContext(GlobalContext)
+  }, [icebreakers.icebreakerList, icebreakers.indexOfRandomIcebreaker])
+    //  if app bugs out remove this ^ 
   
     return (
       <div className="icebreakersingle-containter">
@@ -51,9 +52,6 @@ export default function IceBreakersSingle() {
             })
             .then(() => {
                 icebreakers.setIndexOfRandomIcebreaker(Math.floor((Math.random() * icebreakers.icebreakerList.length)))
-            })
-            .then(() => {
-                console.log('random icebreaker', icebreakers.icebreakerList[icebreakers.indexOfRandomIcebreaker])
             })
             .catch(err => {
                 console.error(err.code)

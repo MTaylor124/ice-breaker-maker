@@ -4,7 +4,7 @@
     box-sizing: border-box;
     border: 1px solid gold;
 } */
-.Topics {
+.ActivitiesAll {
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -19,11 +19,11 @@
     letter-spacing: 0px;
     color: #000000;
 }
-.Topics>h1 {
+.ActivitiesAll>h1 {
     width: 300px;
     margin: 6px 0;
 }
-.Topics>p {
+.ActivitiesAll>p {
     margin: 4px 0;
     padding: 3px;
 }

@@ -14,7 +14,8 @@ import { GlobalContext } from '../context/GlobalContext'
 export default function BottomNav() {
 
     let {
-        nav
+        nav,
+        createPrompt
     }= useContext(GlobalContext)
 
     const FancyNavigation = styled(BottomNavigation)({
@@ -59,20 +60,32 @@ export default function BottomNav() {
                     <BottomNavigationAction 
                         // style={bottomNavStyle} 
                         label="Topics" 
-                        icon={<SearchIcon onClick={() => nav.redirectToTopics()}/>} />
+                        icon={<SearchIcon onClick={() => {
+                            createPrompt.clearData()
+                            nav.redirectToTopics()}
+                        }/>} />
 
                     <BottomNavigationAction 
                         // style={bottomNavStyle} 
                         label="Favorites" 
-                        icon={<FavoriteIcon onClick={() => nav.redirectToFavorites()}/>} />
+                        icon={<FavoriteIcon onClick={() => {
+                            createPrompt.clearData()
+                            nav.redirectToFavorites()}
+                        }/>} />
                         <BottomNavigationAction 
                     // style={bottomNavStyle} 
                         label="Activities" 
-                        icon={<DirectionsRunIcon onClick={() => nav.redirectToActivities()}/>} />
+                        icon={<DirectionsRunIcon onClick={() => {
+                            createPrompt.clearData()
+                            nav.redirectToActivities()}
+                        }/>} />
                     <BottomNavigationAction 
                     // style={bottomNavStyle} 
                         label="Create" 
-                        icon={<AddCircleIcon onClick={() => nav.redirectToCreate()}/>} />
+                        icon={<AddCircleIcon onClick={() => {
+                            createPrompt.clearData()
+                            nav.redirectToCreate()}
+                        }/>} />
             </FancyNavigation>
         </div>
     )

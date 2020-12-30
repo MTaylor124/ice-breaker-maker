@@ -10,6 +10,7 @@ import Button from '@material-ui/core/Button'
 
 import firebase from 'firebase/app'
 import 'firebase/firestore'
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 export default function Create() {
 
@@ -31,15 +32,38 @@ export default function Create() {
         marginTop: '20px'
     }
     const submitStyle = {
-        marginTop: '15px'
+        marginTop: '15px',
+        textTransform: 'none',
+        width: '50vw',
+        height: '8vh',
+        fontSize: '1.2rem'
     }
-    let titleContent, bodyContent, submitContent
-
+    let titleContent, bodyContent, submitContent, submitMessage, bodyPlaceholder, finalMessage
+    if (createPrompt.submitting) {
+        submitMessage = (
+            <CircularProgress style={{color: 'white'}}/>
+        )
+    } else {
+        if (createPrompt.type === 'Icebreakers') {
+            submitMessage = 'Submit Icebreaker'
+            bodyPlaceholder = 'Why do YOU think the chicken crossed the road?'
+        } else {
+            submitMessage = 'Submit Activity'
+            bodyPlaceholder = "Wave your hands in the air like you just don't care!"   
+        }
+    }
+    if (createPrompt.submittedType === 'Icebreakers') {
+        finalMessage = 'Thank you for adding your Icebreaker!'
+    } else if (createPrompt.submittedType === 'Activity') {
+        finalMessage = 'Thank you for adding your Activity!'
+    } else {
+        finalMessage = 'somethings wrong'
+    }
 
     if (createPrompt.type !== null) {
         titleContent = (
             <TextField
-                placeholder='why did the chicken cross the road?'
+                placeholder={bodyPlaceholder}
                 style={titleStyle}
                 color='primary'
                 // disabled={}
@@ -53,7 +77,7 @@ export default function Create() {
         )
         bodyContent = (
             <TextField
-                placeholder='why did the chicken cross the road?'
+                placeholder={bodyPlaceholder}
                 style={bodyStyle}
                 color='primary'
                 // disabled={}
@@ -74,30 +98,35 @@ export default function Create() {
                 variant='contained'
                 color='primary'
                 onClick={() => {
-                let today = new Date()
-                let day = today.getDate().toString()
-                let month = (today.getMonth() + 1).toString()
-                let year = today.getFullYear().toString()
-                let todaysDate = month.concat('-',day,'-',year)
+                    
+                    createPrompt.submitForm(createPrompt.type)
 
-                let randomID = Math.floor(Math.random() * 1000000)
+                    let today = new Date()
+                    let day = today.getDate().toString()
+                    let month = (today.getMonth() + 1).toString()
+                    let year = today.getFullYear().toString()
+                    let todaysDate = month.concat('-',day,'-',year)
 
-                firebase.firestore().collection(createPrompt.type)
-                .add({
-                    title: createPrompt.title,
-                    body: createPrompt.body,
-                    added: todaysDate,
-                    createdBy: user.userID,
-                    id: randomID
-                })
-                .then(docref => {
-                    console.log('we did it', docref.id)
-                })
-                .catch(err => {
-                    console.error(err.code)
-                })
-            }}>
-                submit
+                    let randomID = Math.floor(Math.random() * 1000000)
+
+                    firebase.firestore().collection(createPrompt.type)
+                    .add({
+                        title: createPrompt.title,
+                        body: createPrompt.body,
+                        added: todaysDate,
+                        createdBy: user.userID,
+                        id: randomID
+                    })
+                    .then(() => {
+                        setTimeout(() => {
+                            createPrompt.finishSubmitting()
+                        }, 1000)
+                    })
+                    .catch(err => {
+                        console.error(err.code)
+                    })
+                }}>
+                {submitMessage}
             </Button>
         )
     } else {
@@ -106,10 +135,22 @@ export default function Create() {
         submitContent = <div></div>
     }
 
+
     if (!auth.signedIn) {
         return (
             <div>
-                this is only allowed for users, please create an account if you wish to access this feature
+                Create is only allowed for users, please create an account if you wish to access this feature
+            </div>
+        )
+    } else if (createPrompt.submitted) {
+        return (
+            <div className='create-prompt-container'>
+                <div className="create-prompt-header">
+                    Create New Icebreaker or Activity
+                </div>
+                <div className="create-prompt-thanks">
+                    {finalMessage}
+                </div>
             </div>
         )
     } else {
@@ -132,7 +173,7 @@ export default function Create() {
                             labelPlacement="bottom"
                             />
                         </FormGroup>
-                    </FormControl>
+                    </FormControl> 
                 </div>
                 {titleContent}
                 {bodyContent}

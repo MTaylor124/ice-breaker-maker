@@ -14,7 +14,8 @@ import 'firebase/auth'
 export default function Nav() {
 
     let {
-        auth
+        auth,
+        createPrompt
     } = useContext(GlobalContext)
 
     const [anchorEl, setAnchorEl] = React.useState(null)
@@ -64,22 +65,32 @@ export default function Nav() {
                 MenuListProps={{ disablePadding: true }}
                 transitionDuration={500}
             >
-                <MenuItem onClick={handleClose} style={menuStyle}>
+                <MenuItem onClick={() => {
+                    createPrompt.clearData()
+                    handleClose()
+                }} style={menuStyle}>
                     <Link to='/myicebreakers' style={dropdownItemStyle}>
                         My Icebreakers
                     </Link>
                 </MenuItem>
-                <MenuItem onClick={handleClose} style={menuStyle}>
+                <MenuItem onClick={() => {
+                    createPrompt.clearData()
+                    handleClose()
+                }} style={menuStyle}>
                     <Link to='/myactivities' style={dropdownItemStyle}>
                         My Activities
                     </Link>
                 </MenuItem>
-                <MenuItem onClick={handleClose} style={menuStyle}>
+                <MenuItem onClick={() => {
+                    createPrompt.clearData()
+                    handleClose()
+                }} style={menuStyle}>
                     <Link to='/dev' style={dropdownItemStyle}>
                         dev
                     </Link>
                 </MenuItem>
                 <MenuItem onClick={() => {
+                    createPrompt.clearData()
                     firebase.auth().signOut()
                     .then(() => {
                         handleClose()

@@ -5,6 +5,9 @@ import firebase from 'firebase/app'
 import 'firebase/firestore'
 import { GlobalContext } from '../context/GlobalContext';
 
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+// import { ToggleButton } from '@material-ui/lab'
 
 export default function IceBreakersSingle() {
 
@@ -27,7 +30,9 @@ export default function IceBreakersSingle() {
         <div className="icebreaker-card">
           <h2 className="card-title">Question</h2>
             <hr className="card-hr"/>
-          <p className="icebreaker-text">{ icebreaker }</p>
+          <p className="icebreaker-text">{icebreaker}</p>
+          <button className="fav-button-empty"><FavoriteBorderIcon className="favorite-icon"/></button>
+          {/* <button className="fav-button-full"><FavoriteIcon className="favorite-icon"/></button> */}
         </div>
         <button
           className="BreakIceBtn-2"

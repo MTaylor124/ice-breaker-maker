@@ -1,0 +1,17 @@
+.FavoritesCards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #17409129;
+    letter-spacing: var(--unnamed-character-spacing-0);
+    text-align: left;
+    letter-spacing: 0px;
+    color: #020202;
+    opacity: 1;
+    margin: 9px 0px;
+    border: 1px solid #707070;
+    border-radius: 1%;
+}
+/* .fav-content {
+   padding: 5px 5px 0px 5px;
+} */

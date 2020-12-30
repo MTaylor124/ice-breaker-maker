@@ -9,7 +9,8 @@ import { GlobalContext } from '../context/GlobalContext';
 function BreakIceButton(props) {
 
     let {
-        icebreakers
+        icebreakers,
+        home
     } = useContext(GlobalContext)
 
     return(
@@ -34,7 +35,7 @@ function BreakIceButton(props) {
                         icebreakers.setIndexOfRandomIcebreaker(Math.floor((Math.random() * icebreakers.icebreakerList.length)))
                     })
                     .then(() => {
-                        console.log('random icebreaker', icebreakers.icebreakerList[icebreakers.indexOfRandomIcebreaker])
+                        home.showPopup()
                     })
                     .catch(err => {
                         console.error(err.code)

@@ -18,7 +18,8 @@ export default function IceBreakersSingle() {
   })
 
   let {
-  icebreakers
+  icebreakers,
+  home
   } = useContext(GlobalContext)
   
     return (
@@ -55,6 +56,9 @@ export default function IceBreakersSingle() {
         }}
         >
           BREAK THE ICE
+        </button>
+        <button onClick={() => home.closePopup()}>
+            Close
         </button>
       </div>
     )

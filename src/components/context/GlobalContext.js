@@ -180,6 +180,19 @@ export class GlobalContextProvider extends React.Component {
                         return s
                     })
                 }
+            },
+            home: {
+                showingPopup: false,
+                showPopup: () => {
+                    this.setState(s => {
+                        return s.home.showingPopup = true
+                    })
+                },
+                closePopup: () => {
+                    this.setState(s => {
+                        return s.home.showingPopup = false
+                    })
+                }
             }
             // Maha
 

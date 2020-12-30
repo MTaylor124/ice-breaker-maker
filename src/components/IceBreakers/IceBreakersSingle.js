@@ -15,9 +15,6 @@ export default function IceBreakersSingle() {
       const getIceBreaker = icebreakers.icebreakerList[icebreakers.indexOfRandomIcebreaker].body
       setIceBreaker(getIceBreaker)
     }
-    else {
-      return <p>Press the Button!</p>
-    }
   })
 
   let {
@@ -30,7 +27,6 @@ export default function IceBreakersSingle() {
           <h2 className="card-title">Question</h2>
             <hr className="card-hr"/>
           <p className="icebreaker-text">{ icebreaker }</p>
-          {/* above is where a js function will go to display an icebreaker */}
         </div>
         <button
           className="BreakIceBtn-2"
@@ -57,7 +53,9 @@ export default function IceBreakersSingle() {
                 console.error(err.code)
             })
         }}
-        >BREAK THE ICE</button>
+        >
+          BREAK THE ICE
+        </button>
       </div>
     )
 }

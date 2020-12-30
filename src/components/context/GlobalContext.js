@@ -112,7 +112,6 @@ export class GlobalContextProvider extends React.Component {
 
             },
             createPrompt: {
-                type: null,
                 changeTitle: (newtitle) => {
                     this.setState(s => {
                         return s.createPrompt.title = newtitle
@@ -125,17 +124,62 @@ export class GlobalContextProvider extends React.Component {
                     })
                 },
                 body: null,
+                disableIce: false,
+                disableAct: false,
+                type: null,
                 setType: (newType) => {
-                    if (this.state.createPrompt.type === newType) {
-                        this.setState(s => {
-                            return s.createPrompt.type = null
-                        })
+                    if (this.state.createPrompt.type === null) {
+                        if (newType === 'Icebreakers') {
+                            this.setState(s => {
+                                s.createPrompt.type = 'Icebreakers'
+                                s.createPrompt.disableAct = true
+                                s.createPrompt.disableIce = false
+                                return s
+                            })
+                        } else if (newType === 'Activity') {
+                            this.setState(s => {
+                                s.createPrompt.type = 'Activity'
+                                s.createPrompt.disableAct = false
+                                s.createPrompt.disableIce = true
+                                return s
+                            })
+                        }
                     } else {
                         this.setState(s => {
-                            return s.createPrompt.type = newType
+                            s.createPrompt.type = null
+                            s.createPrompt.disableAct = false
+                            s.createPrompt.disableIce = false
+                            return s
                         })
                     }
                 },
+                submitting: false,
+                submitForm: (theType) => {
+                    this.setState(s => {
+                        s.createPrompt.submittedType = theType
+                        return s.createPrompt.submitting = true
+                    })
+                },
+                submitted: false,
+                finishSubmitting: () => {
+                    this.setState(s => {
+                        return s.createPrompt.submitted = true
+                    })
+                },
+                submittedType: null,
+                clearData: () => {
+                    this.setState(s => {
+                        s.createPrompt.title = null
+                        s.createPrompt.body = null
+                        s.createPrompt.type = null
+                        s.createPrompt.disableIce = false
+                        s.createPrompt.disableAct = false
+                        s.createPrompt.submitted = null
+                        s.createPrompt.submittedType = null
+                        s.createPrompt.submitting = null
+                        return s
+                    })
+                }
             }
             // Maha
 

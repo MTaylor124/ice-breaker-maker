@@ -15,7 +15,10 @@ export default function IceBreakersSingle() {
   
   let {
   icebreakers,
-  home
+  home,
+  auth,
+//   checkContext,
+  user
   } = useContext(GlobalContext)
 
   useEffect(() => {
@@ -26,31 +29,115 @@ export default function IceBreakersSingle() {
   }, [icebreakers.icebreakerList, icebreakers.indexOfRandomIcebreaker])
     //  if app bugs out remove this ^ 
   
+    let favoriteImage, titleCheck
+    const heartButtonStyle = {
+        fontSize: '5vh'
+    }
+    if (icebreakers.loadingList) {
+        titleCheck = ''
+    } else if (icebreakers.loadingList === false) {
+        titleCheck = icebreakers.icebreakerList[icebreakers.indexOfRandomIcebreaker].title
+    } else {
+        titleCheck = ''
+    }
+    if (auth.signedIn) {
+        favoriteImage = (
+            <button className="fav-button-empty"
+            onClick={() => {
+                let today = new Date()
+                let day = today.getDate().toString()
+                let month = (today.getMonth() + 1).toString()
+                let year = today.getFullYear().toString()
+                let todaysDate = month.concat('-',day,'-',year)
+
+                // checkContext()
+
+                firebase.firestore().collection('users').doc(user.userRef).collection('favorites')
+                .add({
+                    favoriteID: icebreakers.icebreakerList[icebreakers.indexOfRandomIcebreaker].id,
+                    favoritedOn: todaysDate
+                })
+                .then(doc => {
+                    console.log('check for sub collection')
+                })
+                .catch(err => {
+                    console.eror(err.code)
+                })
+
+                // firebase.firestore().collection('users')
+                // .where('userID', '==', user.userID)
+                // .limit(1)
+                // .get()
+                // .then(snapshot => {
+                //     snapshot.forEach(doc => {
+                //         console.log('data?@', doc.id)
+                //     })
+                //     console.log('???', snapshot)
+                // })
+                // .limit(1)
+                // .get()
+                // .then(doc => {
+                //     console.log('data?', doc.data())
+                // })
+                //     firebase.firestore().collection('users')
+                //     .doc(doc.id)
+                //     .collection('favorites')
+                //     .add({
+                //         favoritedOn: 'todays date',
+                //         favoriteIcebreakerID: 'context ID of icebreaker (write this into context)',
+                //     })
+                // })
+                // .then(() => {
+                //     firebase.firestore().collection('Icebreakers')
+                //     .doc('context ID of icebreaker')
+                //     .update({
+                //         numberOfLikes: firebase.firestore.FieldValue.increment(1)
+                //     })
+                //     .catch(err => {
+                //         console.error(err.code)
+                //     })
+                // })
+                // .catch(err => {
+                //     console.error(err.code)
+                // })
+
+            }}>
+              <FavoriteBorderIcon style={heartButtonStyle}/>
+            </button>
+        )
+    } else {
+        favoriteImage = ''
+    }
+    // need to check to see if its a favorite first
+    
     return (
       <div className="icebreakersingle-containter">
         <div className="icebreaker-card">
-          <h2 className="card-title">Question</h2>
+          <h2 className="card-title">{titleCheck}</h2>
             <hr className="card-hr"/>
           <p className="icebreaker-text">{icebreaker}</p>
-          <button className="fav-button-empty"><FavoriteBorderIcon className="favorite-icon"/></button>
-          {/* <button className="fav-button-full"><FavoriteIcon className="favorite-icon"/></button> */}
+
+            {favoriteImage}          
         </div>
         <button
           className="BreakIceBtn-2"
           onClick={() => {
             icebreakers.clearList()
+            icebreakers.loadList()
             firebase.firestore().collection('Icebreakers')
             .get()
             .then(snapshot => {
                 snapshot.forEach(doc => {
                     let newIceBreaker = {
                         title: doc.data().title,
-                        body: doc.data().body
+                        body: doc.data().body,
+                        id: doc.id
                     }
                     icebreakers.addToIceBreakers(newIceBreaker)
                 })
             })
             .then(() => {
+                icebreakers.finishLoadingList()
                 icebreakers.setIndexOfRandomIcebreaker(Math.floor((Math.random() * icebreakers.icebreakerList.length)))
             })
             .catch(err => {

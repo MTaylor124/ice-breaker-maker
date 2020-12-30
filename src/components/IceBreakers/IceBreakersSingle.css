@@ -21,8 +21,16 @@
   background-color: rgb(204, 212, 230);
   /* overflow: hidden;
   transition-duration: 0.5s; */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
+.card-title {
+    /* height: 20%; */
+    /* background-color: yellow; */
+}
 /* .icebreaker-card:hover {
   transform: scale(1.5);
 } */
@@ -38,13 +46,12 @@
   word-wrap: break-word;
 }
 
-.favorite-icon {
-  height: 50vh;
-}
-
 .fav-button-empty {
   border: none;
+  margin-top: 80px;
   background-color: rgb(204, 212, 230);
+  /* align-self: flex-end; */
+  /* justify-self: flex-end; */
 }
 
 .fav-button-full {

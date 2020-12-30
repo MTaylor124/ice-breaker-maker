@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import BreakIceButton from '../BreakIceButton/BreakIceButton.js';
 import Backdrop from '@material-ui/core/Backdrop'
 import { GlobalContext } from '../context/GlobalContext.js';
-
+import './Home.css';
 import IceBreakersSingle from './../IceBreakers/IceBreakersSingle'
 
 export default function Home() {
@@ -16,7 +16,9 @@ export default function Home() {
     }
     return (
         <div className='home'>
-            <BreakIceButton />
+            <div className='btn-break'>
+                <BreakIceButton />
+            </div>
             <Backdrop
                 style={backdropstyle}
                 open={home.showingPopup}

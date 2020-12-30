@@ -28,12 +28,14 @@
 } */
 
 .icebreaker-text {
-  width: 80vw;
+  /* width: 80vw; */
+  max-width: 65vw;
   font-size: large;
   text-align: center;
   vertical-align: middle;
   margin: 0 auto;
   margin-top: 15vh;
+  word-wrap: break-word;
 }
 
 .BreakIceBtn-2 {

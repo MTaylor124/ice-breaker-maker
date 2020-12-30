@@ -8,7 +8,7 @@ import { GlobalContext } from '../context/GlobalContext';
 
 export default function IceBreakersSingle() {
 
-  const [icebreaker, setIceBreaker] = useState({})
+  const [icebreaker, setIceBreaker] = useState("Press the Button!")
   
   useEffect(() => {
     if (icebreakers.icebreakerList[icebreakers.indexOfRandomIcebreaker]) {

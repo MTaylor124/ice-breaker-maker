@@ -11,6 +11,8 @@ import { GlobalContext } from '../context/GlobalContext'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 
+import Logo from './Logo.svg'
+
 export default function Nav() {
 
     let {
@@ -145,9 +147,10 @@ export default function Nav() {
 
     return (
         <div className='nav-container'>
-            <Link to='/' style={{ textDecoration: 'none' }}>
-                {/* LOGO */}
-                <div className='nav-brand'>IBM</div>
+            <Link to='/' style={{ textDecoration: 'none', display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                <img src={Logo} alt='logo' className='nav-brand-logo'/>
+
+                <div className='nav-brand'>Icebreaker Maker</div>
             </Link>
             <Button aria-controls='fade-menu' aria-haspopup='true' onClick={handleClick}>
                 <MoreHorizIcon style={dropdownStyle}/>

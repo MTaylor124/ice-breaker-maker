@@ -38,5 +38,33 @@ const hostInformation = [
     }
 ]
 
+let firebase
+
+function favorite () {
+    firebase.firestore().collection('users').where('id', '==', 'context id')
+    .get()
+    .then(doc => {
+        firebase.firestore().collection('users')
+        .doc(doc.id)
+        .collection('favorites')
+        .add({
+            favoritedOn: 'todays date',
+            favoriteIcebreakerID: 'context ID of icebreaker (write this into context)',
+        })
+    })
+    .then(() => {
+        firebase.firestore().collection('Icebreakers')
+        .doc('context ID of icebreaker')
+        .update({
+            numberOfLikes: firebase.firestore.FieldValue.increment(1)
+        })
+        .catch(err => {
+            console.error(err.code)
+        })
+    })
+    .catch(err => {
+        console.error(err.code)
+    })
+}
 
 
